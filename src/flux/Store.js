@@ -1,7 +1,7 @@
 export class Store {
     constructor(dispatcher){
         this.__listeners = [];
-        this.__state = this.getInitialState();
+        // this.__state = this.getInitialState();
         dispatcher.register(this.__onDispatch.bind(this));
     }
     getInitialState(){
