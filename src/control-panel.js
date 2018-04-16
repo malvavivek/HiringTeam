@@ -23,42 +23,65 @@ $(function () {
 
     }
     const render = (state) => {
+        
         $("#countTable").dataTable({
             // "bProcessing": true,
             // "bServerSide": true,
             // "sAjaxSource": "http://localhost:3000/data",
             // "sServerMethod": "GET",
-            // "columns": [{
-            //         "nomineeList": "name"
-            //     },
-            //     {
-            //         "nomineeList": "nominatedBy"
-            //     },
-            //     {
-            //         "nomineeList": "status"
-            //     },
-            // ],
             // "bPaginate": true,
-            // // "bInfo": false,
-            // // "bFilter": false,
-            // // "bLengthChange": false,
-            // // "bSort": false,
+            // "bInfo": false,
+            // "bFilter": false,
+            // "bLengthChange": false,
+            // "bSort": false,
             // "sPaginationType": "full_numbers",
             // "pageLength": 5
             searching: false,
             ordering: false,
-            paging:true,
-            serverSide:true,
+            info: false,
+            paging: true,
+            lengthChange: false,
+            serverSide: true,
+            pagingType:'full_numbers',
+            pageLength: 5,
             "ajax": {
                 "url": "http://localhost:3000/data",
-                "type": "GET"
-              }
+                "type": "GET",
+                "dataSrc": 'nomineeList'
+            },
+            // "columnDefs": [{
+            //     "defaultContent": "",
+            //     "targets": "_all"
+            //   }]
+            "columns": [{
+                "data":"id"
+            },{
+                    "data": "name"
+                },
+                {
+                    "data": "nominatedBy"
+                },
+                {
+                    "data": "status"
+                },{ 
+                    "render": function(data, type, row, meta){
+                       if(type === 'display'){
+                           data = '<a href="#">View</a>';
+                       }
+           
+                       return data;
+                    }
+                 } 
+            ]
         });
 
         $('.first').text('').append('<i class="fa fa-angle-double-left" aria-hidden="true"></i>');
         $('.previous').text('').append('<i class="fa fa-angle-left" aria-hidden="true"></i>');
         $('.next').text('').append('<i class="fa fa-angle-right" aria-hidden="true"></i>');
         $('.last').text('').append('<i class="fa fa-angle-double-right" aria-hidden="true"></i>');
+
+
+        
         const template = $('.nominee-details');
         $('.nominee-details').remove();
         let i = 1;
