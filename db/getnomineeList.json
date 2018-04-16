@@ -1,0 +1,82 @@
+
+{ 
+    "nomineeList": [
+        {
+            "id": "1",
+            "name": "Ashutosh",
+            "nominatedBy": "Self",
+            "status": "Pending Supervisor Approval"
+
+        },
+        {
+            "id": "2",
+            "name": "Siddhartha",
+            "nominatedBy": "Supervisor",
+            "status": "In Progress"
+            
+        },
+        {
+            "id": "3",
+            "name": "Aman",
+            "nominatedBy": "Self",
+            "status": "Pending Supervisor Approval"
+            
+        },
+        {
+            "id": "4",
+            "name": "Rajat",
+            "nominatedBy": "Supervisor",
+            "status": "Completed"
+            
+        },
+        {
+            "id": "5",
+            "name": "Rohan",
+            "nominatedBy": "Supervisor",
+            "status": "Pending"
+            
+        },
+        {
+            "id": "6",
+            "name": "John",
+            "nominatedBy": "Self",
+            "status": "Pending Supervisor Approval"
+            
+        },
+        {
+            "id": "7",
+            "name": "Rachel",
+            "nominatedBy": "Supervisor",
+            "status": "In Progress"
+            
+        },
+        {
+            "id": "8",
+            "name": "Emily",
+            "nominatedBy": "Self",
+            "status": "In Progress"
+            
+        },
+        {
+            "id": "9",
+            "name": "Betty",
+            "nominatedBy": "Self",
+            "status": "In Progress"
+            
+        },
+        {
+            "id": "10",
+            "name": "Jane",
+            "nominatedBy": "Supervisor",
+            "status": "Completed"
+            
+        },
+        {
+            "id": "11",
+            "name": "Ashley",
+            "nominatedBy": "Self",
+            "status": "In Progress"
+            
+        }
+    ]
+}

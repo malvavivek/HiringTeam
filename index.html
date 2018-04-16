@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nominee Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha256-NJWeQ+bs82iAeoT5Ktmqbi3NXwxcHlfaVejzJI2dklU="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0="
+        crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"> -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="nominee-dashboard.css">
+
+    <style>
+        .paging_full_numbers {
+            display: flex;
+            margin-left: auto;
+            justify-content: center;
+        }
+        .paging_full_numbers .first,
+        .paging_full_numbers .last,
+        .paging_full_numbers .previous,
+        .paging_full_numbers .next {
+            color: blue;
+        }
+        .paging_full_numbers>a,
+        .paging_full_numbers>span {
+            margin-top: 20px;
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            line-height: 1.42857143;
+            color: #337ab7;
+            text-decoration: none;
+            background-color: #e5eff7;
+        }
+        .paging_full_numbers>span>a {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="mt-5">
+        <section class="welcome-header d-flex ml-3">
+            <h1 class="welcome-user col-7 p-0">
+                Welcome
+                <span class="logged-in-username"> XYZ</span>
+            </h1>
+            <nav class="header-nav d-flex col-5 p-0">
+                <a href="#" class="view-profile">View Profile</a>
+                <a href="#" class="logout">Logout</a>
+            </nav>
+        </section>
+        <section class="page-nav-header mt-2">
+            <nav>
+                <a href="#" class="home-link page-nav-layout pl-3">Home</a>
+                <i class="fa fa-angle-right d-none"></i>
+                <a href="#" class="dashboard-link page-nav-layout d-none"></a>
+                <i class="fa fa-angle-right d-none"></i>
+                <a href="#" class="details-link page-nav-layout d-none"></a>
+            </nav>
+        </section>
+    </header>
+
+    <body>
+        <table class="table nominee-table" id="countTable">
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Nominated By</th>
+                    <th>Assessment Status</th>
+                    <th>View Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="nominee-details">
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">5</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">8</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">9</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">11</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">15</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">18</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">21</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">31</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">41</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">1</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="serial-no">67</td>
+                    <td class="nominee-name">xyz</td>
+                    <td class="nominated-by">abc</td>
+                    <td class="assessment-status">Pending Supervisor Approval</td>
+                    <td class="view-details">
+                        <a href="#">View</a>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+        <script src="main.js">
+        </script>
+    </body>
+
+</html>

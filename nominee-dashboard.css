@@ -1,0 +1,73 @@
+.nominee-table {
+    font-size: 12px;
+    width: 90%;
+    margin: 30px auto 0;
+    background: #f4f8fb;
+}
+
+@media (max-width: 767px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr,
+    th {
+        display: block;
+    }
+    thead tr {
+        display: none;
+    }
+    tr {
+        border: 1px solid #fff;
+    }
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    .table td {
+        padding-left: 40%;
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        overflow-wrap: break-word;
+    }
+    td:nth-of-type(1):before {
+        content: "S.No.";
+    }
+    td:nth-of-type(2):before {
+        content: "Name";
+    }
+    td:nth-of-type(3):before {
+        content: "Nominated By";
+    }
+    td:nth-of-type(4):before {
+        content: "Assessment Status";
+    }
+    td:nth-of-type(5):before {
+        content: "View Details";
+    }
+}
+
+@media (min-width: 768px) {
+    .nominee-table {
+        font-size: 12px;
+        text-align: center;
+    }
+    .table td {
+        border-bottom: 1px solid #fff;
+    }
+    .table thead th {
+        border: 1px solid #1b3280;
+    }
+    tbody td {
+        border: 1px solid #1b3280;
+    }
+    table{
+        border-bottom: 2px solid #1b3280;
+    }
+}
