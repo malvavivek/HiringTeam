@@ -1,6 +1,6 @@
 .nominee-table {
     font-size: 12px;
-    width: 100%;
+    width: 92%;
     margin: 30px 15px 0 20px;
     background: #f4f8fb;
 }
@@ -11,6 +11,14 @@
     justify-content: center;
 }
 
+.disabled {
+    opacity: 0.4;
+}
+
+.current {
+    text-decoration: underline;
+}
+
 .dataTables_paginate .first,
 .dataTables_paginate .last,
 .dataTables_paginate .previous,
@@ -18,12 +26,13 @@
     color: blue;
 }
 
+
 .dataTables_paginate>a,
 .dataTables_paginate>span {
     margin-top: 20px;
     position: relative;
     float: left;
-    padding: 6px 12px;
+    padding: 6px 4px;
     line-height: 1.42857143;
     color: #337ab7;
     text-decoration: none;
@@ -31,9 +40,12 @@
 }
 
 .dataTables_paginate>span>a {
-    padding-left: 20px;
+    padding: 0 3px 0;
 }
 
+.dataTables_paginate {
+    margin: 10px auto 10px;
+}
 @media (max-width: 767px) {
     table,
     thead,
@@ -86,6 +98,7 @@
     .nominee-table {
         font-size: 12px;
         text-align: center;
+        width: 95%;
     }
     .table td {
         border-bottom: 1px solid #fff;
@@ -99,4 +112,20 @@
     table {
         border-bottom: 2px solid #1b3280;
     }
+    .dataTables_paginate {
+        position: absolute;
+        /* margin-left: auto;
+        margin-right: auto; */
+        left: 0;
+        right: 0;
+        top: 650px;
+        margin: 10px auto 10px;
+    }
+    .dataTables_paginate>span>a {
+        padding: 0 7px 0;
+    }
+    .dataTables_paginate>a {
+        padding: 6px 7px;
+    }
+    
 }

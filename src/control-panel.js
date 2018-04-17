@@ -11,11 +11,11 @@ $(function () {
 
         getInitialState(cb) {
             $.ajax({
-                url: "http://localhost:3000/data",
+                url: "http://localhost:3000/nomineeList",
                 method: 'get',
                 contentType: 'application/json',
                 success: (res) => {
-                    this.__state = res.nomineeList;
+                    this.__state = res;
                     cb(this.__state);
                 }
             });
@@ -23,39 +23,29 @@ $(function () {
 
     }
     const render = (state) => {
-        $('#countTable_first').text('a');
-        // $('.first').text('').appendTo('<i class="fa fa-angle-double-left" aria-hidden="true"></i>');
-        $('.previous').text('').appendTo('<i class="fa fa-angle-left" aria-hidden="true"></i>');
-        $('.next').text('').appendTo('<i class="fa fa-angle-right" aria-hidden="true"></i>');
-        $('.last').text('').appendTo('<i class="fa fa-angle-double-right" aria-hidden="true"></i>');
+
         $("#countTable").dataTable({
-            // "bProcessing": true,
-            // "bServerSide": true,
-            // "sAjaxSource": "http://localhost:3000/data",
-            // "sServerMethod": "GET",
-            // "bPaginate": true,
-            // "bInfo": false,
-            // "bFilter": false,
-            // "bLengthChange": false,
-            // "bSort": false,
-            // "sPaginationType": "full_numbers",
-            // "pageLength": 5
             searching: false,
             ordering: false,
             info: false,
             paging: true,
             lengthChange: false,
             serverSide: false,
-            pagingType:'full_numbers',
-            pageLength: 5,
-            "ajax": {
-                "url": "http://localhost:3000/data",
-                "type": "GET",
-                "dataSrc": 'nomineeList'
+            pagingType: 'full_numbers',
+            pageLength: 10,
+            autoWidth: false,
+            language: {
+                paginate: {
+                    first: '&ll;',
+                    previous: '&lt;',
+                    next: '&gt;',
+                    last: '&gg;'
+                }
             },
+            "data": state,
             "columns": [{
-                "data":"id"
-            },{
+                    "data": "id"
+                }, {
                     "data": "name"
                 },
                 {
@@ -63,39 +53,21 @@ $(function () {
                 },
                 {
                     "data": "status"
-                },{ 
-                    "render": function(data, type, row, meta){
-                       if(type === 'display'){
-                           data = '<a href="#">View</a>';
-                       }
-           
-                       return data;
+                }, {
+                    "render": function (data, type) {
+                        if (type === 'display') {
+                            data = '<a href="#">View</a>';
+                        }
+
+                        return data;
                     },
-                    
-                 } 
+
+                }
             ]
-        });
-       
-
-
-        
-        const template = $('.nominee-details');
-        $('.nominee-details').remove();
-        let i = 1;
-        // var table = $('#countTable').DataTable();
-        // table.clear().draw();
-        state.forEach((nominee) => {
-            let nomineeRow = template.clone();
-            nomineeRow.find('.serial-no').html(`${i++}`);
-            nomineeRow.find('.nominee-name').html(`${nominee.name}`);
-            nomineeRow.find('.nominated-by').html(nominee.nominatedBy);
-            nomineeRow.find('.assessment-status').html(nominee.status);
-            nomineeRow.appendTo('.nominee-table');
         });
     };
     const nomineeStore = new getNomineeStore(controlPanelDispatcher);
     nomineeStore.getInitialState((nominee) => {
         render(nominee);
     });
-
 })
