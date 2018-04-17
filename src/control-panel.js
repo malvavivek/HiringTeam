@@ -45,7 +45,7 @@ $(function () {
             info: false,
             paging: true,
             lengthChange: false,
-            serverSide: true,
+            serverSide: false,
             pagingType:'full_numbers',
             pageLength: 5,
             "ajax": {
@@ -70,7 +70,8 @@ $(function () {
                        }
            
                        return data;
-                    }
+                    },
+                    
                  } 
             ]
         });
