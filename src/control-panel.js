@@ -64,12 +64,7 @@ $(function () {
                     'data': 'status'
                 }, {
                     'render': function (data, type, row, meta) {
-                        // if (type === 'display') {
-                        //     data = '<a href="">View</a>';
-                        // }
-
-                        // return data;
-                        return '<a href="">View</a>';
+                        return '<a href="#">View</a>';
                     },
                 }
             ]
