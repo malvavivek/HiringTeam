@@ -34,6 +34,13 @@ $(function () {
             pagingType: 'full_numbers',
             pageLength: 10,
             autoWidth: false,
+            "createdRow": function (row, data, dataIndex) {
+                $(row).children(':nth-child(1)').addClass('serial-no');
+                $(row).children(':nth-child(2)').addClass('nominee-name');
+                $(row).children(':nth-child(3)').addClass('nominated-by');
+                $(row).children(':nth-child(4)').addClass('assessment-status');
+                $(row).children(':nth-child(5)').addClass('view-details');
+            },
             language: {
                 paginate: {
                     first: '&ll;',
@@ -57,13 +64,13 @@ $(function () {
                     'data': 'status'
                 }, {
                     'render': function (data, type, row, meta) {
-                        if (type === 'display') {
-                            data = '<a href="">View</a>';
-                        }
+                        // if (type === 'display') {
+                        //     data = '<a href="">View</a>';
+                        // }
 
-                        return data;
+                        // return data;
+                        return '<a href="">View</a>';
                     },
-
                 }
             ]
         });
