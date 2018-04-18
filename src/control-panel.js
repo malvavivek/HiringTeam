@@ -11,7 +11,7 @@ $(function () {
 
         getInitialState(cb) {
             $.ajax({
-                url: "http://localhost:3000/nomineeList",
+                url: 'http://localhost:3000/nomineeList',
                 method: 'get',
                 contentType: 'application/json',
                 success: (res) => {
@@ -24,7 +24,7 @@ $(function () {
     }
     const render = (state) => {
 
-        $("#countTable").dataTable({
+        $('#countTable').dataTable({
             searching: false,
             ordering: false,
             info: false,
@@ -42,21 +42,23 @@ $(function () {
                     last: '&gg;'
                 }
             },
-            "data": state,
-            "columns": [{
-                    "data": "id"
+            data: state,
+            columns: [{
+                    'render': function (data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
                 }, {
-                    "data": "name"
+                    'data': 'name'
                 },
                 {
-                    "data": "nominatedBy"
+                    'data': 'nominatedBy'
                 },
                 {
-                    "data": "status"
+                    'data': 'status'
                 }, {
-                    "render": function (data, type) {
+                    'render': function (data, type, row, meta) {
                         if (type === 'display') {
-                            data = '<a href="#">View</a>';
+                            data = '<a href="">View</a>';
                         }
 
                         return data;
